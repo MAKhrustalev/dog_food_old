@@ -1,1 +1,7 @@
-
+body {
+  background-color: springgreen;
+}
+p {
+  color: forestgreen;
+  font-size: 20px;
+}
