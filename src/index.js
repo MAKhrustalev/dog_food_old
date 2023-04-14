@@ -1,10 +1,19 @@
 /*  1)Импортировать react */
+/*
+  const A = Math.PI
+  export A
+
+  import A
+*/
+
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 import "./index.css";
 
 // Взять из html-файла тег, внутри которого будет работать React
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 // Собрать внутрь тега код из круглых скобок
 // root.render(
 //   React.createElement("h1", {title: "doggy"}, "Hello React!")
@@ -18,3 +27,5 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 //     React.createElement("p", {style:{color: "red"}}, "DogFood shop")
 //   )
 // )
+
+root.render(<App />);
