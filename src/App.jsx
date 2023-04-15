@@ -1,34 +1,22 @@
-import testData from "./assents/data.json";
-import Card from "./components/Card/Card"; // Card.jsx
-import Header from "./components/Header"; // Header/index.jsx
-import { Footer } from "./components/Header";
+import { useState } from "react";
+
+import testData from "./assets/data.json";
+import Card from "./components/Card/Card";
+import Promo from "./components/Promo/Promo";
+import { Header, Footer } from "./components/General"; // index.jsx
 
 const promoData = ["=)", "^_^", "O_o", "x_x", "=(", ";(", "0l0"];
-// .map() => преобразовывает один елемент массива в другой элемент (для всех без исключения)
 
 console.log(testData);
 
-const Promo = (props) => {
-  // props - объект - используется для передачи разных значений внутрь компонента
-  return (
-    <div className="promo__block">
-      <div className="promo__img" />
-      <p className="promo__text">{props.text || "-"}</p>
-    </div>
-  );
-};
-
 const App = () => {
-  const smiles = [];
-  for (let i = 0; i < promoData.length; i++) {
-    if (i % 2) {
-      // остаток от деления = true => !0
-      smiles.push(<Promo key={`sm${i}`} text={promoData[i]} />);
-    }
-  }
+  // const user = localStorage.getItem("user12");
+  const [user, setUser] = useState(localStorage.getItem("user12"));
+  // Сохрани в переменную user то значение, что находится внутри useState
   return (
     <>
-      <Header />
+      {/* upd - передали функцию setUser внутрь компонента Header, чтобы внутри использовать ее как слово upd() */}
+      <Header user={user} upd={setUser} />
       <div>
         <h1>First Page</h1>
         <div className="container">
@@ -40,24 +28,9 @@ const App = () => {
               price={pro.price}
             />
           ))}
-          {/* <Promo text="First"/>
-                    <Promo text="Second"/>
-                    <Promo text={4 * 10}/>
-                    <Promo/> */}
-          {
-            // [<span>1</span>,2,<div>3</div>,4,<a href="">5</a>]
-          }
           {promoData.map((el) => (
-            <Promo key={`${el}1`} text={el} />
+            <Promo key={el} text={el} />
           ))}
-          <Promo />
-          {promoData.map((el) => (
-            <Promo key={`${el}2`} text={el} />
-          ))}
-
-          <Promo text={promoData[1]} />
-          <Promo text={promoData[2]} />
-          {smiles}
         </div>
       </div>
       <Footer />
